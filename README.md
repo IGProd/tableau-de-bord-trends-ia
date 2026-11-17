@@ -49,3 +49,31 @@ le runtime d'hébergement.
 - `drizzle/` — migrations SQL
 - `AGENTS.md` — règles de construction de l'artefact
 - `DATA-PLAN.md` — plan de données, sources testées et approches rejetées
+
+## Version statique pour GitHub Pages (`docs/`)
+
+Le dossier `docs/` contient une version 100 % statique du tableau de bord —
+`index.html`, `app.js`, `styles.css`, vanilla JS, aucun build, aucune
+dépendance — prévue pour GitHub Pages. Elle appelle les mêmes API publiques
+directement depuis le navigateur (Hugging Face, npm, GitLab, Hacker News,
+OpenAlex) ; les favoris sont stockés en `localStorage` et les flux sont mis
+en cache 60 minutes dans le navigateur.
+
+Différences honnêtes avec la version complète :
+- **Papiers de recherche :** l'API arXiv n'envoie pas d'en-tête CORS, donc
+  un navigateur ne peut pas l'interroger. La version statique utilise
+  **OpenAlex** (mêmes domaines, tri par date), avec Semantic Scholar en
+  secours. La section l'indique.
+- **Presse éditoriale :** le flux « À la une » (recherche web côté serveur)
+  n'a pas d'équivalent navigateur : il est omis, et la page le dit.
+- Pas de base de données, pas de serveur : en cas de panne d'une source, la
+  section affiche un message d'erreur qui nomme la source, jamais de données
+  inventées.
+
+### Activer GitHub Pages
+
+Dans le dépôt, **Settings → Pages → Build and deployment → Source :
+« Deploy from a branch »**, branche `main`, dossier `/docs`, puis Save.
+L'adresse est alors `https://igprod.github.io/tableau-de-bord-trends-ia/`.
+Sur un compte GitHub gratuit, Pages exige un dépôt **public** (un dépôt
+privé ne peut être publié que avec GitHub Pro).

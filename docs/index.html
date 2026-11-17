@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tableau de bord des tendances IA : modèles et outils en vogue, actualités et papiers de recherche récents. Données publiques en direct.">
+  <title>Veille IA — Tableau de bord Trends IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="live-dot">● Live</span>
+      <span class="brand">Veille IA</span>
+      <form class="search-form" id="search-form" role="search">
+        <label class="sr-only" for="search">Rechercher un modèle, un outil ou un sujet IA</label>
+        <input id="search" type="search" placeholder="Rechercher : agent, vidéo, llama…" autocomplete="off">
+        <button class="fav-btn" type="button" id="search-clear" hidden aria-label="Effacer la recherche">✕</button>
+      </form>
+      <button class="btn-accent" type="button" id="refresh-btn" aria-label="Actualiser les données">↻ Actualiser</button>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Sections du tableau de bord"></nav>
+  </header>
+
+  <main id="main" aria-live="polite">
+    <div class="loading" id="loading">
+      <p>Récupération des tendances en direct…</p>
+      <p>Hugging Face · npm · GitLab · Hacker News · OpenAlex</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Version statique du tableau de bord « Trends IA » — aucune donnée n'est inventée : chaque section affiche ses sources et sa date de mise à jour, ou un message d'erreur honnête si la source est injoignable.</p>
+    <p>Sources : <a href="https://huggingface.co/models">Hugging Face</a> · <a href="https://www.npmjs.com/">npm</a> · <a href="https://gitlab.com/">GitLab</a> · <a href="https://news.ycombinator.com/">Hacker News</a> · <a href="https://openalex.org/">OpenAlex</a> (papiers de recherche, remplace arXiv, non accessible depuis un navigateur) · <a href="https://www.semanticscholar.org/">Semantic Scholar</a> (secours)</p>
+    <p>Les favoris sont stockés uniquement dans ce navigateur (localStorage). La version complète avec serveur et cache est dans le dépôt : <a href="https://github.com/IGProd/tableau-de-bord-trends-ia">IGProd/tableau-de-bord-trends-ia</a>.</p>
+    <noscript><p>Cette page demande JavaScript pour récupérer les tendances en direct.</p></noscript>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
